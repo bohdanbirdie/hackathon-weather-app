@@ -9,16 +9,48 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Picker,
+  AppState,
+  Platform
 } from 'react-native';
+import PushController from './PushController';
+import PushNotification from 'react-native-push-notification';
 
 
 export default class weather extends Component {
   constructor(){
     super();
+    this.handleAppStateChange = this.handleAppStateChange.bind(this);
     this.state = {
+      seconds: 5,
       lat: null,
       lon: null
+    };
+  }
+
+  componentDidMount() {
+    AppState.addEventListener('change', this.handleAppStateChange);
+  }
+
+  componentWillUnmount() {
+    AppState.removeEventListener('change', this.handleAppStateChange);
+  }
+
+  handleAppStateChange(appState) {
+    console.log(appState);
+    if (appState === 'background') {
+      let date = new Date(Date.now() + (this.state.seconds * 1000));
+
+      if (Platform.OS === 'ios') {
+        // date = date.toISOString();
+        console.log(date);
+      }
+
+      PushNotification.localNotificationSchedule({
+        message: "My Notification Message",
+        date,
+      });
     }
   }
 
@@ -37,15 +69,8 @@ export default class weather extends Component {
   }
 
   render() {
-    console.log('tet');
-    // fetch('http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b1b15e88fa797225412429c1c50c122a1').then(function(response) {
-    //   console.log(response);
-    //  })
-    //  .catch((error) => {
-    //    console.error(error);
-    //  });
-
      const getMoviesFromApiAsync = () => {
+       console.log(`https://api.openweathermap.org/data/2.5/weather?lat=${this.state.lat}&lon=${this.state.lon}&APPID=8affd1eb7b57ab094e89f5bf2248db83`);
        return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${this.state.lat}&lon=${this.state.lon}&APPID=8affd1eb7b57ab094e89f5bf2248db83`, {
           method: 'GET'
         })
@@ -63,19 +88,26 @@ export default class weather extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Choose your notification time in seconds. test
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js loooool
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <Picker
+          style={styles.picker}
+          selectedValue={this.state.seconds}
+          onValueChange={(seconds) => {
+            this.setState({ seconds })
+            console.log(this.state);
+          }}
+        >
+          <Picker.Item label="5" value={5} />
+          <Picker.Item label="10" value={10} />
+          <Picker.Item label="15" value={15} />
+        </Picker>
+        <PushController />
       </View>
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -89,10 +121,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  picker: {
+    width: 100,
   },
 });
 
