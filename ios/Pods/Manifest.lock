@@ -33,13 +33,13 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   React:
-    :path: ../node_modules/react-native
+    :path: "../node_modules/react-native"
   RNBackgroundFetch:
-    :path: ../node_modules/react-native-background-fetch
+    :path: "../node_modules/react-native-background-fetch"
   RNBackgroundGeolocation:
-    :path: ../node_modules/react-native-background-geolocation
+    :path: "../node_modules/react-native-background-geolocation"
   Yoga:
-    :path: ../node_modules/react-native/ReactCommon/yoga
+    :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 2800c03334042fe80589423c8d80e582dcaec482
@@ -50,4 +50,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: ff02f52b6f563429137fec8f7edbd758cdb4c2d9
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.2.1
