@@ -1,0 +1,53 @@
+PODS:
+  - CocoaLumberjack (3.2.1):
+    - CocoaLumberjack/Default (= 3.2.1)
+    - CocoaLumberjack/Extensions (= 3.2.1)
+  - CocoaLumberjack/Default (3.2.1)
+  - CocoaLumberjack/Extensions (3.2.1):
+    - CocoaLumberjack/Default
+  - React (0.48.4):
+    - React/Core (= 0.48.4)
+  - React/Core (0.48.4):
+    - Yoga (= 0.48.4.React)
+  - React/DevSupport (0.48.4):
+    - React/Core
+    - React/RCTWebSocket
+  - React/RCTBlob (0.48.4):
+    - React/Core
+  - React/RCTWebSocket (0.48.4):
+    - React/Core
+    - React/RCTBlob
+  - RNBackgroundFetch (2.2.0):
+    - React
+  - RNBackgroundGeolocation (2.9.4):
+    - CocoaLumberjack (~> 3.0)
+    - React
+  - Yoga (0.48.4.React)
+
+DEPENDENCIES:
+  - React/Core (from `../node_modules/react-native`)
+  - React/DevSupport (from `../node_modules/react-native`)
+  - RNBackgroundFetch (from `../node_modules/react-native-background-fetch`)
+  - RNBackgroundGeolocation (from `../node_modules/react-native-background-geolocation`)
+  - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
+
+EXTERNAL SOURCES:
+  React:
+    :path: "../node_modules/react-native"
+  RNBackgroundFetch:
+    :path: "../node_modules/react-native-background-fetch"
+  RNBackgroundGeolocation:
+    :path: "../node_modules/react-native-background-geolocation"
+  Yoga:
+    :path: "../node_modules/react-native/ReactCommon/yoga"
+
+SPEC CHECKSUMS:
+  CocoaLumberjack: 2800c03334042fe80589423c8d80e582dcaec482
+  React: 6d68659481a8a56e0f6b3dbecd984d5b9bb2d6c5
+  RNBackgroundFetch: 7e34a761c6f083fcfa2bdddcc721afcfbf7ff2ea
+  RNBackgroundGeolocation: 4f3d96b2b70b1a43f6e206cf3e96ef13025902e4
+  Yoga: ccefa1454b2e9825dce3b2df98088b7f0e3c2675
+
+PODFILE CHECKSUM: ff02f52b6f563429137fec8f7edbd758cdb4c2d9
+
+COCOAPODS: 1.2.1
